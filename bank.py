@@ -2,13 +2,13 @@ from atm_machine import ATM
 import datetime
 
 class SavingsAccount:
-    transactions = []
     def __init__(self, account_name, account_number, atm_card_num, atm_pin, balance):
        self.account_name = account_name
        self.account_number = account_number
        self.balance = balance
        self.atm_card_num = atm_card_num
        self.atm_pin = atm_pin
+       self.transactions = []  # changed this to an instance variable to make it exclusive to one account
 
     def get_balance(self):
         return f"Current balance: {self.balance}"
@@ -53,10 +53,11 @@ class SavingsAccount:
 
 
 class Bank:
-    accounts = []
-    handled_atms = []
     def __init__(self, bank_name):
         self.bank_name = bank_name
+        self.accounts = [] # changed to instance variable to make it exclusive to one bank
+        self.handled_atms = [] # changed to instance variable to make it exclusive to one bank
+
     
     def create_account(self):
         account_name = input("Please enter account name: ")
